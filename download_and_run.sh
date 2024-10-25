@@ -45,9 +45,9 @@ if [ "$OS" != "windows" ]; then
 fi
 
 # 执行下载的二进制文件
-echo "下载完成，你可以通过下面方式加速镜像："
+echo -e "\033[32m下载完成，你可以通过下面方式加速镜像：\033[0m"
 if [ "$OS" == "windows" ]; then
-    echo ./fast-docker-hub-$OS-$ARCH.exe nginx
+    echo -e "\033[32m./fast-docker-hub-$OS.exe nginx\033[0m"
 else
-    echo ./fast-docker-hub-$OS nginx
+    echo -e "\033[32m./fast-docker-hub-$OS nginx\033[0m"
 fi
