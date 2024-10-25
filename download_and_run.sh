@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # 设置变量
-REPO="https://github.com/oldwang12/tools-public.git"  # 替换为目标 GitHub 仓库
-VERSION="latest"         # 可以指定版本号，或使用 "latest" 获取最新版本
+REPO="oldwang12/tools-public"  # 替换为目标 GitHub 仓库
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')  # 获取操作系统名称
 
 # 根据操作系统设置下载链接
@@ -23,7 +22,7 @@ case $OS in
 esac
 
 # 构建下载 URL
-DOWNLOAD_URL="https://github.com/$REPO/releases/download/$VERSION/example-$OS-$ARCH"
+DOWNLOAD_URL="https://raw.githubusercontent.com/$REPO/refs/heads/master/fast-docker-hub/fast-docker-hub-$OS"
 
 # Windows 文件扩展名
 if [ "$OS" == "windows" ]; then
@@ -42,16 +41,13 @@ fi
 
 # 给文件添加执行权限（仅适用于 Linux 和 macOS）
 if [ "$OS" != "windows" ]; then
-    chmod +x "example-$OS-$ARCH"
+    chmod +x "fast-docker-hub-$OS-$ARCH"
 fi
 
 # 执行下载的二进制文件
-echo "正在执行二进制文件..."
+echo "下载完成，你可以通过下面方式加速镜像："
 if [ "$OS" == "windows" ]; then
-    ./"example-$OS-$ARCH.exe"
+    echo ./fast-docker-hub-$OS-$ARCH.exe nginx
 else
-    ./"example-$OS-$ARCH"
+    echo ./fast-docker-hub-$OS nginx
 fi
-
-# 结束
-echo "脚本执行完毕"
